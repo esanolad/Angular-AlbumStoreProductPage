@@ -4,21 +4,31 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { map  } from 'rxjs/operators';
 
+/*
+@Injectable()
+export class ProductService {
+
+ private _albumUrl : string = "../assets/album.json"
+
+
+  constructor(private _http: Http) { }
+
+
+  getAlbum(id: number): Observable<any> {
+    return this._http.get(this._albumUrl).pipe(map(response => response.json()))
+  }
+
+} */
 
 @Injectable()
 export class ProductService {
 
+  private _albumUrl = '../assets/album.json';
+
   constructor(private _http: Http) { }
 
-  private _albumUrl : string = "../assets/album.json"
-
- getAlbum(id:number) :Observable<any> {
-    return this._http.get(this._albumUrl).pipe(
-      map(response => response.json()),
-
-    )
-
-
+  getAlbum(id: number) {
+    return this._http.get(this._albumUrl).pipe(map((response) => response.json()));
   }
 
 }
